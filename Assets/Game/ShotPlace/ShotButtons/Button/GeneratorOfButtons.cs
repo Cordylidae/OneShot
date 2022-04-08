@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 public class GeneratorOfButtons : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class GeneratorOfButtons : MonoBehaviour
 
 
     [SerializeField] private GameObject ButtonEntity;
+    [SerializeField] private int Count = 12;
 
     private int levelOfHard;
 
@@ -47,15 +49,18 @@ public class GeneratorOfButtons : MonoBehaviour
 
         levelOfHard = level;
 
-        hardPropities.count = 12;
+        hardPropities.count = Count;
+        hardPropities.minAtView = 1;
+        hardPropities.minAtView = 4;
 
-        
 
-        float time = 30.0f;
+        float time = (0.7f*Count) + 10.0f;
         rope.ReStartRopeTime(true, time);
     }
 
     List<GameObject> Buttons = new List<GameObject>();
+    List<GameObject> CurrentButtons = new List<GameObject>();
+
 
     public void StartGenerate()
     {
@@ -81,6 +86,23 @@ public class GeneratorOfButtons : MonoBehaviour
             
             Buttons.Add(go);
         }
+
+        OnNextShot();
+    }
+
+    private void OnNextShot()
+    {
+        int CountAtNextView = Random.RandomRange(hardPropities.minAtView, hardPropities.maxAtView);
+
+        Animation anim;
+
+        for (int i = 0; i < CountAtNextView; i++)
+        {
+            
+            CurrentButtons.Add(Buttons[Buttons.Count - 1 - i]);
+
+            StartCoroutine(CreateWithAnim(Buttons[Buttons.Count - 1 - i], (float)(i + 1) * 0.07f));
+        }
     }
 
     private void OnShotButtonClick(int indexButton)
@@ -93,7 +115,9 @@ public class GeneratorOfButtons : MonoBehaviour
 
             GameObject go = Buttons[Buttons.Count-1];
             Buttons.RemoveAt(Buttons.Count - 1);
-            Destroy(go);
+            CurrentButtons.RemoveAt(CurrentButtons.Count - 1);
+            StartCoroutine(DestroyWithAnim(go));
+
         }
         else if (indexButton - lastIndex == 2)
         {
@@ -110,7 +134,8 @@ public class GeneratorOfButtons : MonoBehaviour
             {
                 GameObject go = Buttons[Buttons.Count - 1];
                 Buttons.RemoveAt(Buttons.Count - 1);
-                Destroy(go);
+                CurrentButtons.RemoveAt(CurrentButtons.Count - 1);
+                StartCoroutine(DestroyWithAnim(go));
             }
 
         }
@@ -125,6 +150,27 @@ public class GeneratorOfButtons : MonoBehaviour
         }
 
         if (Buttons.Count == 0) EndGameShot();
+        else if (CurrentButtons.Count == 0) OnNextShot();
+    }
+
+    IEnumerator CreateWithAnim(GameObject go, float time)
+    {
+        Animation anim = go.GetComponent<Animation>();
+
+        yield return new WaitForSeconds(time);
+
+        go.SetActive(true);
+        anim.Play("OpenShot");
+    }
+
+    IEnumerator DestroyWithAnim(GameObject go)
+    {
+        Animation anim = go.GetComponent<Animation>();
+        anim.Play("CloseShot");
+
+        yield return new WaitForSeconds(anim["CloseShot"].length);
+
+        Destroy(go);
     }
 
     public void ClearAllShots()
@@ -135,11 +181,14 @@ public class GeneratorOfButtons : MonoBehaviour
             Buttons.RemoveAt(0);
             Destroy(go);
         }
+
+        CurrentButtons.Clear();
     }
 
     public Trigger.TriggerEvent EndGame = new Trigger.TriggerEvent();
     public void EndGameShot()
     {
+        ClearAllShots();
         EndGame.Invoke();
     }
 }

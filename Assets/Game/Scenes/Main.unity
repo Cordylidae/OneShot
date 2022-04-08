@@ -6032,7 +6032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d19e17c3af10d44a830c9e144c5a41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonEntity: {fileID: 5137789424568216019, guid: 53031f0bf262a4c418520299d111e917, type: 3}
+  ButtonEntity: {fileID: 6207530905523433441, guid: 53031f0bf262a4c418520299d111e917, type: 3}
+  Count: 100
 --- !u!1 &914483737
 GameObject:
   m_ObjectHideFlags: 0
@@ -11426,10 +11427,10 @@ RectTransform:
   m_Father: {fileID: 1604984939}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1080, y: 1920}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -5.340027, y: 22.28003}
+  m_SizeDelta: {x: 363.33, y: 350.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1698489336
 MonoBehaviour:
