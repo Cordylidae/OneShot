@@ -31,8 +31,6 @@ public class GeneratorOfButtons : MonoBehaviour
     private int lastIndex;
     private RopeTimeLine rope = null;
 
-
-
     void Start()
     {
             
@@ -73,13 +71,15 @@ public class GeneratorOfButtons : MonoBehaviour
 
             int index = go.GetComponent<IButtonIndex>().Index = i;
 
-            RectTransform rect = go.GetComponent<RectTransform>();
+            RectTransform rect = go.GetComponentsInChildren<RectTransform>()[1];
+
             go.transform.localPosition = new Vector3(
                             Random.RandomRange(-540 + rect.rect.width / 2, 540 - rect.rect.width / 2),
                             Random.RandomRange(-960 + rect.rect.height / 2, 960 - rect.rect.height / 2),
                             0.0f);
 
-            go.GetComponent<IButtonTrigger>().OnTrigger.AddListener(() =>
+            
+            go.GetComponentInChildren<IButtonTrigger>().OnTrigger.AddListener(() =>
             {
                  OnShotButtonClick(index);
             });
@@ -94,14 +94,12 @@ public class GeneratorOfButtons : MonoBehaviour
     {
         int CountAtNextView = Random.RandomRange(hardPropities.minAtView, hardPropities.maxAtView);
 
-        Animation anim;
-
         for (int i = 0; i < CountAtNextView; i++)
         {
             
             CurrentButtons.Add(Buttons[Buttons.Count - 1 - i]);
 
-            StartCoroutine(CreateWithAnim(Buttons[Buttons.Count - 1 - i], (float)(i + 1) * 0.07f));
+            StartCoroutine(CreateWithAnim(Buttons[Buttons.Count - 1 - i], (float)(i + 1) * 0.05f));
         }
     }
 

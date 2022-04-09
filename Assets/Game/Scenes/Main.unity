@@ -6032,7 +6032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d19e17c3af10d44a830c9e144c5a41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonEntity: {fileID: 6207530905523433441, guid: 53031f0bf262a4c418520299d111e917, type: 3}
+  ButtonEntity: {fileID: 3109476156942765116, guid: 2101c20af5415524f9c451bc5bbdc01e, type: 3}
   Count: 100
 --- !u!1 &914483737
 GameObject:
@@ -10428,7 +10428,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1513473106
