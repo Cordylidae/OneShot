@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public struct ButtonType
 {
 	public const string Simple = "Simple";
+	public const string Frost = "Frost";
 };
 
 public class IButtonType : MonoBehaviour

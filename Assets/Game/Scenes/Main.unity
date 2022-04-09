@@ -6032,7 +6032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d19e17c3af10d44a830c9e144c5a41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonEntity: {fileID: 3109476156942765116, guid: 2101c20af5415524f9c451bc5bbdc01e, type: 3}
+  buttonModificator: {fileID: 11400000, guid: b5be1c2527713e547a771b1a63b4a089, type: 2}
+  ButtonSimple: {fileID: 3109476156942765116, guid: 2101c20af5415524f9c451bc5bbdc01e, type: 3}
   Count: 100
 --- !u!1 &914483737
 GameObject:
@@ -9984,7 +9985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -184, y: 333}
+  m_AnchoredPosition: {x: 0, y: 281}
   m_SizeDelta: {x: 326, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464516370
@@ -12555,7 +12556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -52, y: 424}
+  m_AnchoredPosition: {x: 0, y: 282}
   m_SizeDelta: {x: 326, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1858845543

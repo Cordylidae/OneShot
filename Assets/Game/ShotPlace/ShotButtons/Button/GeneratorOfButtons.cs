@@ -19,8 +19,8 @@ public class GeneratorOfButtons : MonoBehaviour
         public bool orderChaos;
     };
 
-
-    [SerializeField] private GameObject ButtonEntity;
+    [SerializeField] private ButtonEntities buttonModificator;
+    [SerializeField] private GameObject ButtonSimple;
     [SerializeField] private int Count = 12;
 
     private int levelOfHard;
@@ -50,10 +50,6 @@ public class GeneratorOfButtons : MonoBehaviour
         hardPropities.count = Count;
         hardPropities.minAtView = 1;
         hardPropities.minAtView = 4;
-
-
-        float time = (0.7f*Count) + 10.0f;
-        rope.ReStartRopeTime(true, time);
     }
 
     List<GameObject> Buttons = new List<GameObject>();
@@ -64,7 +60,7 @@ public class GeneratorOfButtons : MonoBehaviour
     {
         for (int i = hardPropities.count - 1; i >= 0; i--)
         {
-            GameObject go = Instantiate(ButtonEntity, new Vector3(0.0f,0.0f,0.0f), ButtonEntity.transform.rotation);
+            GameObject go = Instantiate(ButtonSimple, new Vector3(0.0f,0.0f,0.0f), ButtonSimple.transform.rotation);
             
             go.transform.SetParent(this.transform);
             go.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
@@ -83,26 +79,65 @@ public class GeneratorOfButtons : MonoBehaviour
             {
                  OnShotButtonClick(index);
             });
-            
+
             Buttons.Add(go);
         }
 
         OnNextShot();
-    }
 
+
+        float time = (0.7f * Count) + 10.0f;
+        rope.ReStartRopeTime(true, time);
+    }
+    #region [Start Generate]
+    #endregion
+    
     private void OnNextShot()
     {
         int CountAtNextView = Random.RandomRange(hardPropities.minAtView, hardPropities.maxAtView);
 
         for (int i = 0; i < CountAtNextView; i++)
         {
-            
+
+            SetButtonType(Buttons[Buttons.Count - 1 - i]);
+
             CurrentButtons.Add(Buttons[Buttons.Count - 1 - i]);
 
             StartCoroutine(CreateWithAnim(Buttons[Buttons.Count - 1 - i], (float)(i + 1) * 0.05f));
         }
     }
+    #region [On Next Shot]
+    private void SetButtonType(GameObject go)
+    {
+        int index = Random.RandomRange(0, 100);
 
+        if (index < 70)
+            go.GetComponent<IButtonType>().buttonType = ButtonType.Simple;
+        else
+        {
+            go.GetComponent<IButtonType>().buttonType = ButtonType.Frost;
+
+            GameObject goFrost = Instantiate(buttonModificator.buttonEntities[0], new Vector3(0.0f, 0.0f, 0.0f), buttonModificator.buttonEntities[0].transform.rotation);
+
+            goFrost.SetActive(true);
+            goFrost.transform.SetParent(go.transform);
+
+            goFrost.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            goFrost.transform.localPosition = new Vector3(0.0f, 5.0f, 0.0f);
+
+            goFrost.name = "Button_Type_Frost";
+
+            IFrostButtonTrigger frostTrigger = goFrost.GetComponentInChildren<IFrostButtonTrigger>();
+
+            frostTrigger.OnTrigger.AddListener(() =>
+            {
+                Destroy(goFrost);
+            });
+
+            frostTrigger.Durability = Random.Range(1, 5);
+        }
+    }
+    #endregion
     private void OnShotButtonClick(int indexButton)
     {
         if (indexButton - lastIndex == 1)
