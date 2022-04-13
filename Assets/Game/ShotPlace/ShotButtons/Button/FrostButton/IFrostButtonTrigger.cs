@@ -5,9 +5,8 @@ using System;
 
 public class IFrostButtonTrigger : Trigger
 {
-    [SerializeField] private int durability = 4;
-
     [SerializeField] private Image[] cracks;
+    [SerializeField] private int durability = 4;
     public int Durability
     {
         set

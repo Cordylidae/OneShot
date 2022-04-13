@@ -4,13 +4,13 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 758892832816759647
-    second: Hit_Players_0
+    second: Player
   - first:
       213: -1854209374937050308
-    second: Hit_Players_1
+    second: Fire
   - first:
       213: -9036982117477635770
-    second: Hit_Players_2
+    second: Splash
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,9 +41,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hit_Players_0
+      name: Player
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 569
-        height: 251
+        x: 6
+        y: 15
+        width: 177
+        height: 214
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,13 +157,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hit_Players_1
+      name: Fire
       rect:
         serializedVersion: 2
-        x: 606
-        y: 157
-        width: 27
-        height: 66
+        x: 192
+        y: 199
+        width: 18
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,13 +178,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hit_Players_2
+      name: Splash
       rect:
         serializedVersion: 2
-        x: 575
-        y: 143
-        width: 27
-        height: 78
+        x: 213
+        y: 183
+        width: 23
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,6 +194,111 @@ TextureImporter:
       bones: []
       spriteID: 6492036e4a0369280800000000000000
       internalID: -9036982117477635770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 15
+        width: 177
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3987a3bd08b22dc0800000000000000
+      internalID: -3665164777737975493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit1
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 146
+        width: 24
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba9ae57d510d2430800000000000000
+      internalID: 3759662764846127800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit2
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 156
+        width: 26
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79176028f480c1850800000000000000
+      internalID: 6348958712262455703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullet
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 188
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa86e033bbe935ae0800000000000000
+      internalID: -1561730118914774870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trace
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 147
+        width: 67
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af49ea6e7f5604f70800000000000000
+      internalID: 9169440956727858426
       vertices: []
       indices: 
       edges: []

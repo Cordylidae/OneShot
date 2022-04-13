@@ -50,6 +50,10 @@ public class GeneratorOfButtons : MonoBehaviour
         hardPropities.count = Count;
         hardPropities.minAtView = 1;
         hardPropities.minAtView = 4;
+
+
+        float time = (0.7f * Count) + 10.0f;
+        rope.ReStartRopeTime(true, time);
     }
 
     List<GameObject> Buttons = new List<GameObject>();
@@ -84,10 +88,6 @@ public class GeneratorOfButtons : MonoBehaviour
         }
 
         OnNextShot();
-
-
-        float time = (0.7f * Count) + 10.0f;
-        rope.ReStartRopeTime(true, time);
     }
     #region [Start Generate]
     #endregion
