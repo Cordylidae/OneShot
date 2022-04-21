@@ -10,8 +10,6 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] private Minion enemy;
     [SerializeField] private Player player;
 
-
-
     private int vagonOfPlayer = 0;
     
     //private LineOfHard lineOfHard;
