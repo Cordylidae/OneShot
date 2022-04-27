@@ -7,9 +7,9 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] private bool SetStartGame;
     [SerializeField] private ShotControl shotControl;
     [SerializeField] private SkullScore skullScore;
-    [SerializeField] private Minion enemy;
-    [SerializeField] private Player player;
+    [SerializeField] private VagonControl vagonControl;
 
+   
     private int vagonOfPlayer = 0;
     
     //private LineOfHard lineOfHard;
@@ -38,18 +38,15 @@ public class Game_Manager : MonoBehaviour
         skullScore.Score = vagonOfPlayer;
         skullScore.skullAnimationOpen();
 
-        yield return new WaitForSeconds(1.5f);
-        yield return new WaitForSeconds(player.ShootAnimation());
+        yield return StartCoroutine(vagonControl.NextVagon());
+        yield return new WaitForSeconds(5.0f);
 
-        yield return new WaitForSeconds(enemy.DieAnimation());
-        yield return new WaitForSeconds(1.0f);
 
         skullScore.skullAnimationClose();
 
 
         if (SetStartGame)
         {
-            enemy.PreStart();
             shotControl.PreStartShot();
         }
     }
@@ -60,8 +57,9 @@ public class Game_Manager : MonoBehaviour
         skullScore.skullAnimationOpen();
 
         yield return new WaitForSeconds(1.5f);
-        yield return new WaitForSeconds(enemy.ShootAnimation());
-
-        yield return new WaitForSeconds(player.DieAnimation());
+      
+        yield return StartCoroutine(vagonControl.EndVagon());
     }
 }
+
+

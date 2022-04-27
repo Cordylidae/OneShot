@@ -10,9 +10,11 @@ public class Minion : MonoBehaviour
     protected Vector3 startPosAtStart;
 
     protected Animation animation;
-    protected bool isShaking = true;
 
-    void Start()
+
+    protected bool isShaking = false;
+
+    void Awake()
     {
         startPosAtStart = this.transform.position;
 
@@ -25,9 +27,7 @@ public class Minion : MonoBehaviour
     {
         startPos = startPosAtStart;
 
-        isShaking = true;
-
-        animation.Play("NormalAnim");
+        StartCoroutine(EmergnceAnimation());
     }
 
     protected virtual void LateUpdate()
@@ -59,5 +59,18 @@ public class Minion : MonoBehaviour
         isShaking = false;
 
         return animation["DieAnim"].length;
+    }
+
+    IEnumerator EmergnceAnimation()
+    {
+        animation.Play("EmergAnim");
+        yield return new WaitForSeconds(animation["EmergAnim"].length);
+
+        isShaking = true;
+    }
+
+    public float AnimationTime(string s)
+    {
+        return animation[s].length;
     }
 }
