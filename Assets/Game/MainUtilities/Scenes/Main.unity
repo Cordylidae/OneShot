@@ -6722,7 +6722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonModificator: {fileID: 11400000, guid: b5be1c2527713e547a771b1a63b4a089, type: 2}
   ButtonSimple: {fileID: 3109476156942765116, guid: 2101c20af5415524f9c451bc5bbdc01e, type: 3}
-  Count: 13
+  Count: 12
 --- !u!1 &914483737
 GameObject:
   m_ObjectHideFlags: 0
